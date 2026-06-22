@@ -1,0 +1,6 @@
+{
+  "name": "Aura AI",
+  "description": "Interactive holographic AI reasoning core powered by Gemini",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
