@@ -122,7 +122,7 @@ export default function App() {
       } else if (progress < 85) {
         setStatusText("Deploying deep reasoning heuristical grids...");
       } else {
-        setStatusText("Aura AI Active. Welcome connection.");
+        setStatusText("VST GPT Active. Welcome connection.");
       }
 
       if (elapsed >= duration) {
@@ -149,12 +149,12 @@ export default function App() {
     return [
       {
         id: "default-sess-id",
-        title: "Welcome to Aura AI",
+        title: "Welcome to VST GPT",
         messages: [
           {
             id: "initial-system-greeting",
             role: "assistant",
-            content: `Welcome, ${user ? user.displayName : "Veerendra"}. I am Aura AI, a responsive cognitive agent engineered for direct heuristic synthesis. Type a directive, select an onboard starter tracker, or adjust custom instruction directives below.`,
+            content: `Welcome, ${user ? user.displayName : "Veerendra"}. I am VST GPT, a responsive cognitive agent engineered for direct heuristic synthesis. Type a directive, select an onboard starter tracker, or adjust custom instruction directives below.`,
             timestamp: new Date().toLocaleTimeString()
           }
         ],
@@ -199,7 +199,7 @@ export default function App() {
               if (m.id === "initial-system-greeting") {
                 return {
                   ...m,
-                  content: `Welcome, ${newUser.displayName}. I am Aura AI, a responsive cognitive agent engineered for direct heuristic synthesis. Type a directive, select an onboard starter tracker, or adjust custom instruction directives below.`,
+                  content: `Welcome, ${newUser.displayName}. I am VST GPT, a responsive cognitive agent engineered for direct heuristic synthesis. Type a directive, select an onboard starter tracker, or adjust custom instruction directives below.`,
                 };
               }
               return m;
@@ -229,7 +229,7 @@ export default function App() {
   const [status, setStatus] = useState<CoreStatus>("IDLE");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [customSystemPrompt, setCustomSystemPrompt] = useState("");
-  const [activeModel, setActiveModel] = useState<"Aura-Heuristics" | "Aura-Architect">("Aura-Heuristics");
+  const [activeModel, setActiveModel] = useState<"VST-Heuristics" | "VST-Architect">("VST-Heuristics");
   const [activeTab, setActiveTab] = useState<"chat" | "question_paper">("chat");
   
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -264,7 +264,7 @@ export default function App() {
         {
           id: `greet-${Date.now()}`,
           role: "assistant",
-          content: `Hello, ${user ? user.displayName : "Veerendra"}. How can Aura AI assist your workflows today?`,
+          content: `Hello, ${user ? user.displayName : "Veerendra"}. How can VST GPT assist your workflows today?`,
           timestamp: new Date().toLocaleTimeString()
         }
       ],
@@ -284,13 +284,13 @@ export default function App() {
       setSessions([
         {
           id: "default-sess-id",
-          title: "Welcome to Aura AI",
+          title: "Welcome to VST GPT",
           messages: [
             {
-              id: `greet-${Date.now()}`,
-              role: "assistant",
-              content: `Hello, ${user ? user.displayName : "Veerendra"}. Core buffer cleared. How can Aura AI collaborate with you today?`,
-              timestamp: new Date().toLocaleTimeString()
+               id: `greet-${Date.now()}`,
+               role: "assistant",
+               content: `Hello, ${user ? user.displayName : "Veerendra"}. Core buffer cleared. How can VST GPT collaborate with you today?`,
+               timestamp: new Date().toLocaleTimeString()
             }
           ],
           created: new Date().toLocaleDateString()
@@ -325,7 +325,7 @@ export default function App() {
     // Update session list and title if it was first message
     const updatedMessages = [...activeSession.messages, userMsg];
     let newTitle = activeSession.title;
-    if (activeSession.title === "New chat" || activeSession.title === "Welcome to Aura AI") {
+    if (activeSession.title === "New chat" || activeSession.title === "Welcome to Aura AI" || activeSession.title === "Welcome to SAGE GPT" || activeSession.title === "Welcome to VST GPT") {
       newTitle = promptToSend.length > 25 ? promptToSend.substring(0, 25) + "..." : promptToSend;
     }
 
@@ -359,7 +359,7 @@ export default function App() {
         body: JSON.stringify({
           messages: requestPayload,
           systemInstruction: customSystemPrompt,
-          mode: activeModel === "Aura-Architect" ? "Strict Socratic Analysis (Intense Deep思考 mode)" : "Autonomous Reasoning Core Layout"
+          mode: activeModel === "VST-Architect" ? "Strict Socratic Analysis (Intense Deep思考 mode)" : "Autonomous Reasoning Core Layout"
         })
       });
 
@@ -603,10 +603,10 @@ export default function App() {
                   ? "px-4 py-2.5 w-full justify-start text-[13px]" 
                   : "w-10 h-10 justify-center p-0 mx-auto"
               }`}
-              title="Aura Chat Core Portal"
+              title="VST GPT Chat Portal"
             >
               <MessageSquare size={16} className={activeTab === "chat" ? "text-[#00f2fe]" : "text-slate-500"} />
-              {sidebarOpen && <span>Aura Chat Core</span>}
+              {sidebarOpen && <span>VST Chat Core</span>}
             </button>
 
             <button
@@ -734,7 +734,7 @@ export default function App() {
           <div className="flex items-center gap-4">
             {/* Quick alignment model toggle */}
             <div className="flex bg-[#1e1e20]/80 border border-slate-900 rounded-full p-1 select-none">
-              {(["Aura-Heuristics", "Aura-Architect"] as const).map((m) => (
+              {(["VST-Heuristics", "VST-Architect"] as const).map((m) => (
                 <button
                   key={m}
                   onClick={() => setActiveModel(m)}
@@ -744,7 +744,7 @@ export default function App() {
                       : "text-slate-500 hover:text-slate-300"
                   }`}
                 >
-                  {m === "Aura-Heuristics" ? "Aura Heuristics" : "Aura Architect"}
+                  {m === "VST-Heuristics" ? "VST Heuristics" : "VST Architect"}
                 </button>
               ))}
             </div>
@@ -854,8 +854,7 @@ export default function App() {
             {/* INITIAL BLANK ONBOARDING PANEL (Shown only if no conversations or just welcome line) */}
             {activeSession.messages.length <= 1 && (
               <div className="pt-8 md:pt-12 space-y-10">
-                
-                {/* Premium Animated Aura AI Logo Container */}
+                            {/* Premium Animated VST GPT Logo Container */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -881,7 +880,7 @@ export default function App() {
                     transition={{ duration: 0.7, delay: 0.3 }}
                     className="text-2xl md:text-3xl font-medium tracking-tight text-slate-400"
                   >
-                    Direct directivity stable &bull; Command Aura AI
+                    Direct directivity stable &bull; Command VST GPT
                   </motion.h2>
                 </div>
 
@@ -946,7 +945,7 @@ export default function App() {
                 </div>
                 <div className="flex-1 space-y-3 pt-1">
                   <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono font-semibold tracking-wider">
-                    <span>AURA COGNITIVE SYNAPSE STREAM ACTIVE</span>
+                    <span>VST COGNITIVE SYNAPSE STREAM ACTIVE</span>
                     <span className="flex gap-0.5">
                       <span className="w-1 h-1 bg-[#00f2fe] rounded-full animate-bounce delay-100" />
                       <span className="w-1 h-1 bg-[#00f2fe] rounded-full animate-bounce delay-200" />
@@ -954,7 +953,7 @@ export default function App() {
                     </span>
                   </div>
                   
-                  {/* Aura high-voltage neon loading bar */}
+                  {/* VST high-voltage neon loading bar */}
                   <div className="w-full h-1 rounded-full overflow-hidden relative bg-slate-900/60">
                     <motion.div 
                       animate={{ x: ["-100%", "100%"] }}
@@ -1032,7 +1031,7 @@ export default function App() {
 
             {/* Disclaimer disclaimer footer */}
             <div className="text-[11px] text-center text-slate-500 font-medium select-none px-4">
-              Aura AI can make mistakes. Verify critical reasoning templates. Built under optimized modern heuristics.
+              VST GPT can make mistakes. Verify critical reasoning templates. Built under optimized modern heuristics.
             </div>
 
           </div>

@@ -323,10 +323,10 @@ export default function SageLogoAnimation({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              AURA
+              VST
             </motion.text>
             <motion.text 
-              x="94" 
+              x="72" 
               y="0" 
               fill="url(#cyanPurpleGrad)" 
               fontFamily="system-ui, -apple-system, sans-serif" 
@@ -337,7 +337,7 @@ export default function SageLogoAnimation({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
             >
-              AI
+              GPT
             </motion.text>
             <motion.text 
               x="2" 
@@ -371,7 +371,7 @@ export default function SageLogoAnimation({
               animate={{ opacity: 1, y: 275 }}
               transition={{ delay: 0.8, duration: 1.0, type: "spring", stiffness: 100 }}
             >
-              AURA
+              VST
             </motion.text>
             
             <motion.text 
@@ -389,7 +389,7 @@ export default function SageLogoAnimation({
               transition={{ delay: 1.0, duration: 1.0, type: "spring", stiffness: 100 }}
               className="drop-shadow-[0_0_8px_rgba(0,242,254,0.3)]"
             >
-              AI
+              GPT
             </motion.text>
 
             <motion.text 

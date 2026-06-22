@@ -32,7 +32,7 @@ async function startServer() {
 
   app.use(express.json());
 
-  // API Route for Aura AI Generator Core
+  // API Route for VST GPT Generator Core
   app.post("/api/chat", async (req, res) => {
     try {
       const { messages, systemInstruction, mode } = req.body;
@@ -56,8 +56,8 @@ async function startServer() {
         parts: [{ text: msg.content }],
       }));
 
-      // SAGE Instruction set based on custom Selected Mode
-      const baseInstruction = "You are AURA (Autonomous User-Responsive Agent) AI, a super-intelligent autonomous conversational reasoning core. Your output should be phrased elegantly, structured, mathematically clean, stylishly formatted in markdown with monospace elements, and direct. Avoid conversational filler or apologies. Always start your response with a concise technical summary or bullet points.";
+      // VST Instruction set based on custom Selected Mode
+      const baseInstruction = "You are VST (Virtual Synthesis Technologies) GPT, a super-intelligent autonomous conversational reasoning core. Your output should be phrased elegantly, structured, mathematically clean, stylishly formatted in markdown with monospace elements, and direct. Avoid conversational filler or apologies. Always start your response with a concise technical summary or bullet points.";
       const modeInstruction = mode ? `\nActivate specialized matrix processing: ${mode}.` : "";
       const finalInstruction = `${baseInstruction} ${systemInstruction || ""} ${modeInstruction}`;
 
@@ -85,7 +85,7 @@ async function startServer() {
 
     } catch (e: any) {
       console.error("Gemini API Error in session flow:", e);
-      res.status(500).json({ error: e.message || "An error occurred inside Aura AI Core" });
+      res.status(500).json({ error: e.message || "An error occurred inside VST GPT Core" });
     }
   });
 
@@ -223,10 +223,10 @@ Each question MUST include:
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Aura AI Engine running on http://0.0.0.0:${PORT}`);
+    console.log(`VST GPT Engine running on http://0.0.0.0:${PORT}`);
   });
 }
 
 startServer().catch((err) => {
-  console.error("Failed to start custom Aura AI engine server:", err);
+  console.error("Failed to start custom VST GPT engine server:", err);
 });

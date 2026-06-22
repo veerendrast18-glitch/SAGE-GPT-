@@ -184,7 +184,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, onRegenerate }) => {
           <span className={`text-[11px] font-bold uppercase tracking-wider ${
             isAssistant ? "text-[#a8c7fa]" : "text-sky-300"
           }`}>
-            {isAssistant ? (isSystemMsg ? "SYSTEM CONSOLE" : "AURA AI CORE") : "YOU"}
+            {isAssistant ? (isSystemMsg ? "SYSTEM CONSOLE" : "VST GPT CORE") : "YOU"}
           </span>
           <span className="text-[10px] font-mono text-slate-600">{message.timestamp}</span>
         </div>
@@ -241,7 +241,7 @@ const MessageItem: React.FC<MessageItemProps> = ({ message, onRegenerate }) => {
             )}
             <div className="h-4 w-[1px] bg-slate-800 mx-1"></div>
             <span className="text-[9px] font-mono text-slate-500 uppercase select-none">
-              AURA AI DIRECT COGNITIVE LINK STABLE
+              VST GPT DIRECT COGNITIVE LINK STABLE
             </span>
           </motion.div>
         )}
